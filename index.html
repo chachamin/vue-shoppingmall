@@ -9,12 +9,59 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
     <link rel="stylesheet" href="css/design.css">
+    <script src="https://kit.fontawesome.com/9a1ca0d9e5.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
     <h1 class="blind">vue.js로 만드는 쇼핑몰 웹서비스</h1>
     <header>
-        <h2>추후작업하기</h2>
+        <div class="header-wrap">
+            <div class="tnb-wrap">
+                <div class="tnb">
+                    <div class="home">
+                        <a href="#"><i class="fas fa-home"></i> 처음으로</a>
+                    </div>
+                    <ul class="tnb-list">
+                        <li><a href="#"><i class="fas fa-comment-dots"></i></a></li>
+                        <li><a href="#"><i class="far fa-user-circle"></i></a></li>
+                        <li><a href="#"><i class="fas fa-shopping-basket"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="logo">
+                <a href="#"><img src="images/logo.png" alt="SSADAgu logo"></a>
+            </div>
+            <div class="main-nav">
+                <nav>
+                    <ul id="gnb">
+                        <li><a href="#">SSADAgu</a></li>
+                        <li><a href="#">수납/정리/청소</a></li>
+                        <li><a href="#">주방/욕실</a></li>
+                        <li><a href="#">인테리어</a></li>
+                        <li><a href="#">사무/문구</a></li>
+                        <li><a href="#">디지털/가전</a></li>
+                        <li><a href="#">레저</a></li>
+                        <li><a href="#">유아동</a></li>
+                        <li><a href="#">미용/패션잡화</a></li>
+                        <li><a href="#">식품</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </header>
+    <div class="slide">
+        <ul id="imgs">
+            <li><a href="#"><img src="images/slide1.jpg" alt="동서식품"></a></li>
+            <li><a href="#"><img src="images/slide2.jpg" alt="빼빼로"></a></li>
+            <li><a href="#"><img src="images/slide3.jpg" alt="스테이크"></a></li>
+            <li><a href="#"><img src="images/slide4.jpg" alt="영창피아노"></a></li>
+            <li><a href="#"><img src="images/slide5.jpg" alt="lg생활건강"></a></li>
+            <li><a href="#"><img src="images/slide6.jpg" alt="럭스나인"></a></li>
+        </ul>
+    </div>
     <section>
         <h2 class="blind">상품목록</h2>
         <div id="app">
@@ -41,7 +88,11 @@
         </div>
     </section>
     <footer>
-        <h2>추후작업하기</h2>
+        <div class="footer-wrap">
+            <div class="inner-footer">
+                <div></div>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -97,6 +148,17 @@
                 ]
             }
         });
+    </script>
+    <script>
+        $("#imgs li:gt(0)").hide();
+        setInterval(function(){
+            $("#imgs > li:eq(0)")
+            .fadeOut()
+            .next()
+            .fadeIn()
+            .end()
+            .appendTo("#imgs");
+        },4000);
     </script>
 </body>
 </html>
