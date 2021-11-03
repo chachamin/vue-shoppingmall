@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue.js 쇼핑몰 웹</title>
+    <!-- 개발버전, 도움되는 콘솔 경고를 포함. -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="css/design.css">
+</head>
+<body>
+    <h1 class="blind">vue.js로 만드는 쇼핑몰 웹서비스</h1>
+    <header>
+        <h2>추후작업하기</h2>
+    </header>
+    <section>
+        <h2 class="blind">상품목록</h2>
+        <div id="app">
+            <article>
+                <h3 class="arti-title">hot</h3>
+                <ul id="hot">
+                    <li v-for="(item,index) in items" v-bind:key="item.itemTitle">
+                        <figure>
+                            <img v-bind:src="item.itemPath" v-bind:alt="item.itemAlt">
+                            <figcaption>{{ item.itemTitle }}</figcaption>
+                        </figure>
+                        <div class="price">
+                            <em class="sale-before">{{ item.itemPrice1 }}</em>
+                            <strong class="sale-after">{{ item.itemPrice2 }}</strong>
+                            <span class="count">수량 : {{ item.itemCount }} 개</span>
+                        </div>
+                        <p class="score">평점 : {{ item.itemScore }}</p>
+                        <div class="btns">
+                            <button v-on:click="cart(index)">담기</button><button>구매</button>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </div>
+    </section>
+    <footer>
+        <h2>추후작업하기</h2>
+    </footer>
+
+    <script>
+        var vm = new Vue({
+            el: "#app",
+            methods: {
+                cart: function(index){
+                    var choice = confirm("상품이 장바구니에 담겼습니다. \n 지금 확인하시겠습니까?");
+                    this.$set(this.items[index], this.items[index].itemCount, this.items[index].itemCount--);
+                    if(choice) {
+                        alert("장바구니 화면으로 이동합니다.")
+                    }
+                }
+            },
+            data: {
+                items: [
+                    {
+                        itemPath: 'https://picsum.photos/id/5/400/450',
+                        itemAlt: '국가대표 KF94 마스크(10매)',
+                        itemTitle: '국가대표 KF94 마스크(10매)',
+                        itemPrice1: '30000',
+                        itemPrice2: '20000',
+                        itemScore: '4.5 / 5',
+                        itemCount: 50
+                    },
+                    {
+                        itemPath: 'https://picsum.photos/id/50/400/450',
+                        itemAlt: '국가대표 손세정제(100ml)',
+                        itemTitle: '국가대표 손세정제(100ml)',
+                        itemPrice1: '10000',
+                        itemPrice2: '8000',
+                        itemScore: '4.0 / 5',
+                        itemCount: 10
+                    },
+                    {
+                        itemPath: 'https://picsum.photos/id/500/400/450',
+                        itemAlt: '국가대표 탈취제(10개)',
+                        itemTitle: '국가대표 탈취제(10개)',
+                        itemPrice1: '20000',
+                        itemPrice2: '15000',
+                        itemScore: '3.5 / 5',
+                        itemCount: 20
+                    },
+                    {
+                        itemPath: 'https://picsum.photos/id/555/400/450',
+                        itemAlt: '국가대표 일회용 마스크(50매)',
+                        itemTitle: '국가대표 일회용 마스크(50매)',
+                        itemPrice1: '5000',
+                        itemPrice2: '3000',
+                        itemScore: '5.0 / 5',
+                        itemCount: 100
+                    }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
